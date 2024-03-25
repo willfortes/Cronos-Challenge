@@ -4,7 +4,7 @@ import useGroup from "./hooks/useGroup";
 import CreateGroup from "./CreateGroup";
 import { useState } from "react";
 import UpdateGroup from "./UpdateGroup";
-import { Group, Group as GroupType } from "../../types/group.type";
+import { Group as GroupType } from "../../types/group.type";
 import { 
     TrashIcon,
     PencilIcon,
@@ -37,7 +37,7 @@ const Group = () => {
             }
             {
                 showView && selectedGroup &&
-                <ShowGroup group={selectedGroup} />
+                <ShowGroup show={showView} setShow={setShowView} group={selectedGroup} />
             }
             <SearchGroup />
             <div className="px-4 sm:px-6 lg:px-8">
