@@ -1,5 +1,3 @@
-import { ChangeEventHandler } from "react"
-import { Group } from "../../../types/group.type"
 import useGroup from "../hooks/useGroup"
 
 const SearchGroup = () => {
