@@ -1,6 +1,5 @@
 import './App.css'
 import Group from './components/Group'
-import SearchGroup from './components/Group/SearchGroup'
 import Header from './components/Header'
 
 function App() {

@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { GROUPS } from "../../../service/data/groups"
 import { Group } from "../../../types/group.type"
 import { create } from 'zustand'

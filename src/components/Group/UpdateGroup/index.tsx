@@ -3,7 +3,6 @@ import { Group } from "../../../types/group.type";
 import useGroup from "../hooks/useGroup";
 import { PlusIcon } from "@heroicons/react/24/solid"
 import { useState } from "react";
-import generateId from "../../../utils/generateIds";
 import { toast } from "react-toastify";
 
 type IUpdateProps = {
