@@ -1,0 +1,111 @@
+MICROSERVIÇO DE GRUPO
+Esse microserviço visa facilitar a geração e gerenciamento de grupos em todo ecossistema.
+É possível realizar o cadastro de um grupo e utilizá-lo para requisitar outros microserviços, como boletos, ted, pix, p2p, passando o id do grupo.
+​
+-------------------------------------------------------------------------------------
+​
+## GROUP
+​
+[POST] /
+Esse endpoint realiza a criação de um grupo. Para realizar a criação de um grupo são necessários algumas informações básicas:
+​
+"name" -> Nome/título do grupo
+"tags" -> Array de strings
+"settings" -> Objeto JSON que fica a critério de quem está criando, para definir configurações do grupo.
+"items" -> Lista em mapa {dicionário}
+"owner" -> Id do criador.
+​
+    {
+        'name': "", //string
+        'tags': [], //array
+        'items': //objeto
+            {
+                "42082622819" : {
+                    payer_name:"",
+                    payer_address:"",
+                    payer_address_state:"",
+                    payer_address_zipcode:"",
+                    payer_address_neighbordhood: "",
+                    payer_address_addressName: "",
+                    payer_address_number:"",
+                    payer_address_complement:""
+                }
+            },
+        'settings': {}, //array
+        'owner': "" //string
+    }
+​
+Ação do endpoint:		
+a) VALIDA SE EXISTE "name", "type" e "owner", "settings", "items"
+b) APENAS INSERE NO BANCO.
+c) CHAMA MICROSERVIÇO DE LOG.
+d) Retorna tudo com o id de insert.
+​
+Retorno:
+{"success": true, "message": "", "id": ""}
+​
+[PATCH] /{id}
+Esse endpoint realiza a edição de  um grupo
+​
+    {
+        
+        'name': "", //string 
+        'tags': ['gosto','amigos','carlos'], //array
+        'settings': {},
+        'owner': ""
+    }
+​
+[GET] /{id}
+Retorna determinado grupo
+{
+​
+    'name': "", //string
+    'tags': [], //array
+    'settings': {},
+    'owner' : "", //string
+    'id': "" //string
+}
+​
+[GET] /list/{owner}/
+Lista todos os grupos de um determinado owner, baseando-se no cursor.
+Retorna:
+[
+​
+    {
+​
+        'name': "", //string
+        'tags': [], //array 			
+        'settings': {},
+        'owner': "", //string
+        'id':"abc123"
+    },
+    {
+        'name': "", //string
+        'tags': [], //array 			
+        'settings': {},
+        'owner': "", //string
+        'id':"abc123"
+    }
+    ....
+]
+​
+[DELETE] /{id}
+Deleta um grupo
+​
+-------------------------------------------------------------------------------------
+​
+## ITEM GROUP
+​
+[POST] /item/{group_id}
+Esse endpoint realiza a adição de um novo item.
+​
+    {
+        "payer"
+    }
+​
+​
+[GET] /list/items/{group_id}/
+Cursor para caminhar em itens de determinado group_id.
+​
+[DELETE] /item/{id}/
+Deletar um item por id
